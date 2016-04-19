@@ -5,13 +5,13 @@ This is the Angular 2 Master Class exercise repository. Here's where you'll buil
 If not done already, clone this repository using:
 
 ```
-$ git clone https://github.com/thoughtram/angular2-master-class-exercises.git
+$ git clone https://github.com/thoughtram/angular2-master-class-starter.git
 ```
 
 Done? Great, now install the dependencies (this might take a little while):
 
 ```
-$ cd angular2-master-class-exercises
+$ cd angular2-master-class-starter
 $ npm install
 ```
 
