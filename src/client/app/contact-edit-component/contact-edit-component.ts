@@ -15,7 +15,9 @@ import {Contact} from "../models/contact";
 })
 export class ContactEditComponent implements OnInit {
 
-  contact:Contact;
+  // we need to initialize since we can't use ?. operator with ngModel
+  contact: Contact = <Contact>{ address: {}};
+
 
   constructor(private contactsService: ContactsService,
               private cloneService: CloneService<Contact>,
@@ -23,7 +25,9 @@ export class ContactEditComponent implements OnInit {
               @Inject(RouteParams) private params: RouteParams) {}
 
   ngOnInit():any {
-    this.contact = this.cloneService.createClone(this.contactsService.getContact(this.params.get('id')));
+    // this.contact = this.cloneService.createClone(this.contactsService.getContact(this.params.get('id')));
+    this.contactsService.getContact(this.params.get('id'))
+      .subscribe(contact => this.contact = this.cloneService.createClone(contact));
   }
 
   cancel (contact: Contact) {

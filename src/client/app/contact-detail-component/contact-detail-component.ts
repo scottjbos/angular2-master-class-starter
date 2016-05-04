@@ -20,7 +20,9 @@ export class ContactDetailComponent implements OnInit {
   constructor(private contactsService: ContactsService, @Inject(RouteParams) private params: RouteParams) {}
 
   ngOnInit():any {
-    this.contact = this.contactsService.getContact(this.params.get('id'));
+    //this.contact = this.contactsService.getContact(this.params.get('id'));
+    this.contactsService.getContact(this.params.get('id'))
+      .subscribe(contact => this.contact = contact);
   }
 
 }
