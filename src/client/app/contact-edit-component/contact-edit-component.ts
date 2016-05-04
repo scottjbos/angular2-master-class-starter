@@ -27,17 +27,19 @@ export class ContactEditComponent implements OnInit {
   ngOnInit():any {
     // this.contact = this.cloneService.createClone(this.contactsService.getContact(this.params.get('id')));
     this.contactsService.getContact(this.params.get('id'))
-      .subscribe(contact => this.contact = this.cloneService.createClone(contact));
+      .subscribe(contact => this.contact = contact);
   }
 
   cancel (contact: Contact) {
-    this.cloneService.abortChanges();
+    //this.cloneService.abortChanges();
     this.goToDetails(contact);
   }
 
   save (contact: Contact) {
-    this.cloneService.commitChanges();
-    this.goToDetails(contact);
+    //this.cloneService.commitChanges();
+    //this.goToDetails(contact);
+    this.contactsService.updateContact(contact)
+        .subscribe(() => this.goToDetails(contact));
   }
 
   private goToDetails(contact: Contact) {
